@@ -28,5 +28,6 @@ t_list	*ft_list_pushback(t_list **list, void *value);
 t_list	*ft_list_pushfront(t_list **list, void *value);
 void	*ft_list_popback(t_list **list);
 void	*ft_list_popfront(t_list **list);
+void	ft_list_free(t_list **list);
 
 #endif // FT_LIST_H
