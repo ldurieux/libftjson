@@ -11,6 +11,7 @@ SRCS	= \
 			srcs/next_token.c \
 			srcs/parse_object.c \
 			srcs/parse_member.c \
+			srcs/parse_string.c \
 
 LIBS	=	-lft \
 
