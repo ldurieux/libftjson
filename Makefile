@@ -1,10 +1,16 @@
-SRCS =  main.c \
+SRCS	= \
+			main.c \
+			srcs/ft_list_at.c \
+			srcs/ft_list_pop.c \
+			srcs/ft_list_push.c \
+			srcs/ft_list_size.c \
 
-LIBS =	-lft \
+LIBS	=	-lft \
 
-HEADERS = includes/ \
+HEADERS	=	includes/
 
 LIB_NAMES	= $(subst -l,lib,$(LIBS))
+LIB_LD		= $(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS	= $(foreach lib,$(LIB_NAMES),$(lib)/$(lib).a)
 LIB_HEADERS	= $(foreach lib,$(LIB_NAMES),-I$(lib)/includes/)
 
@@ -13,14 +19,14 @@ DEPS		= ${SRCS:.c=.d}
 CC			= gcc
 CCFLAGS		= -Wall -Wextra -g
 DEPSFLAGS	= -MMD -MP
-NAME		= minishell
+NAME		= libftjson
 RM			= rm -f
 MAKE		= make -C
 
 .PHONY: all clean fclean re
 
 $(NAME) : $(LIB_PATHS) $(OBJS)
-		$(CC) $(CCFLAGS) -I$(HEADERS) $(LIB_HEADERS) -o $@ $(OBJS) $(LIB_DIRS_LD) $(LIBS)
+		$(CC) $(CCFLAGS) -I$(HEADERS) $(LIB_HEADERS) -o $@ $(OBJS) $(LIB_LD) $(LIBS)
 
 $(LIB_PATHS) :
 		$(MAKE) $(notdir $(basename $@))
@@ -31,7 +37,7 @@ clean :
 		-$(RM) $(OBJS) $(DEPS)
 
 fclean : clean
-		$(foreach lib, $(LIB_DIRS), \
+		$(foreach lib, $(LIB_NAMES), \
 			make -C $(lib) fclean; \
 		)
 		-$(RM) $(NAME)
@@ -41,4 +47,4 @@ re : fclean all
 -include $(DEPS)
 
 %.o : %.c Makefile
-		$(CC) $(CCFLAGS) $(DEPSFLAGS) -I$(HEADERS) $(LIB_HEADERS) -c $< -o $@ $(LIB_NAMES) $(LIBS)
+		$(CC) $(CCFLAGS) $(DEPSFLAGS) -I$(HEADERS) $(LIB_HEADERS) -c $< -o $@ $(LIB_LD) $(LIBS)
