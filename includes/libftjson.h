@@ -20,6 +20,7 @@ typedef enum e_json_type
 {
 	J_Null,
 	J_Number,
+	J_Bool,
 	J_String,
 	J_Object,
 	J_Array,

@@ -6,6 +6,7 @@ SRCS	= \
 			srcs/ft_list_size.c \
 			srcs/ft_list_free.c \
 			srcs/ft_json_parse.c \
+			srcs/ft_json_free.c \
 			srcs/ft_json_strerror.c \
 			srcs/next_token.c \
 
