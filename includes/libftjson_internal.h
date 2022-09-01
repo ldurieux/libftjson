@@ -64,6 +64,10 @@ typedef enum e_err
 	garbage_at_end,
 }	t_err;
 
+/* return false if there is no more characters */
+t_bool			skip_whitespace(const char **raw);
+char			next_token(const char **raw);
+
 t_json_value	*parse_object(const char **raw, int *err);
 t_json_value	*parse_array(const char **raw, int *err);
 
