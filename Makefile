@@ -10,6 +10,7 @@ SRCS	= \
 			srcs/ft_json_strerror.c \
 			srcs/next_token.c \
 			srcs/parse_object.c \
+			srcs/parse_member.c \
 
 LIBS	=	-lft \
 

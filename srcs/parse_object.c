@@ -13,7 +13,7 @@
 #include "libftjson.h"
 #include "libftjson_internal.h"
 
-t_json_value	*parse_object_criterr(int *ptr_err, int err,
+static inline t_json_value	*parse_object_criterr(int *ptr_err, int err,
 									t_json_value *res, t_list *obj)
 {
 	if (res)
