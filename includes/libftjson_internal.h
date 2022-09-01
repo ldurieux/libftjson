@@ -16,6 +16,8 @@
 # include "libft.h"
 
 # define ERR_OK				"no error occurred"
+# define ERR_INPUT_NULL		"raw input is null"
+# define ERR_FAIL_MALOC		"memory allocation failed"
 # define ERR_UNTERM_OBJ		"unterminated object"
 # define ERR_MISS_NSEP		"missing name separator"
 # define ERR_UNTERM_ARR		"unterminated array"

@@ -5,6 +5,7 @@ SRCS	= \
 			srcs/ft_list_push.c \
 			srcs/ft_list_size.c \
 			srcs/ft_json_parse.c \
+			srcs/ft_json_strerror.c \
 
 LIBS	=	-lft \
 
