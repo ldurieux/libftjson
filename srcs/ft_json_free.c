@@ -32,7 +32,7 @@ static inline void	ft_json_free_obj(t_list *obj)
 		}
 		obj = obj->next;
 	}
-	ft_list_free(obj_copy);
+	ft_list_free(&obj_copy);
 }
 
 //NOLINTNEXTLINE(misc-no-recursion)
@@ -48,7 +48,7 @@ static inline void	ft_json_free_arr(t_list *arr)
 		ft_json_free(arr->value);
 		arr = arr->next;
 	}
-	ft_list_free(arr_copy);
+	ft_list_free(&arr_copy);
 }
 
 //NOLINTNEXTLINE(misc-no-recursion)
