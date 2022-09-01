@@ -16,7 +16,7 @@ t_list	*ft_list_back(t_list *list)
 {
 	if (!list)
 		return (NULL);
-	while (list.next)
+	while (list->next)
 		list = list->next;
 	return (list);
 }

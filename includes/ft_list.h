@@ -17,8 +17,8 @@
 
 typedef struct s_list
 {
-	s_list	*next;
-	void	*value;
+	struct s_list	*next;
+	void			*value;
 }	t_list;
 
 size_t	ft_list_size(t_list *list);
