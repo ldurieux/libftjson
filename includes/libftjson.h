@@ -19,7 +19,8 @@
 typedef enum e_json_type
 {
 	J_Null,
-	J_Number,
+	J_Float,
+	J_Integer,
 	J_Bool,
 	J_String,
 	J_Object,
@@ -32,7 +33,8 @@ typedef struct s_json_value
 	union
 	{
 		char	*str;
-		double	num;
+		double	f_num;
+		t_int64	i_num;
 		t_bool	bool;
 		t_list	*cont;
 	};
