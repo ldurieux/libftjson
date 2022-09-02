@@ -37,7 +37,7 @@ char	*ft_json_strerror(int err)
 		return (ERR_MISS_NSEP);
 	if (err == unterminated_array)
 		return (ERR_UNTERM_ARR);
-	if (err == missing_value_separator)
+	if (err == missing_val_sep)
 		return (ERR_MISS_VSEP);
 	if (err == illegal_value)
 		return (ERR_ILLEGAL_VAL);

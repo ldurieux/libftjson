@@ -51,7 +51,7 @@ typedef enum e_err
 	unterminated_object,
 	missing_name_separator,
 	unterminated_array,
-	missing_value_separator,
+	missing_val_sep,
 	illegal_value,
 	termination_by_number,
 	illegal_number,
