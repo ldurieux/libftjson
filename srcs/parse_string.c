@@ -30,10 +30,10 @@ char	*parse_string(const char **raw, int *err)
 	while (*end && *end != '\"')
 		end++;
 	if (!*end)
-		parse_string_criterr(err, unterminated_string, NULL);
+		return (parse_string_criterr(err, unterminated_string, NULL));
 	res = ft_strndup(*raw, end - *raw);
 	if (!res)
-		parse_string_criterr(err, failed_malloc, NULL);
+		return (parse_string_criterr(err, failed_malloc, NULL));
 	*raw = end + 1;
 	return (res);
 }
