@@ -54,25 +54,18 @@ static inline t_json_value	*parse_object_loop(const char **raw, int *err,
 		if (token == END_OBJECT)
 			return (parse_object_criterr(err, missing_object, res, obj));
 	}
+	res->cont = obj;
+	*err = (token != END_OBJECT) * unterminated_object;
 	return (res);
 }
 
 t_json_value	*parse_object(const char **raw, int *err)
 {
 	t_json_value	*res;
-	t_list			*obj;
-	char			token;
 
 	res = malloc(sizeof(t_json_value));
 	if (!res)
 		return (parse_object_criterr(err, failed_malloc, NULL, NULL));
 	res->type = J_Object;
-	obj = NULL;
-	token = next_token(raw);
-	res = parse_object_loop(raw, err, res);
-	if (*err)
-		return (res);
-	res->cont = obj;
-	*err = (token != END_OBJECT) * unterminated_object;
-	return (res);
+	return (parse_object_loop(raw, err, res));
 }
