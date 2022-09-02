@@ -14,6 +14,7 @@ SRCS	= \
 			srcs/parse_string.c \
 			srcs/parse_array.c \
 			srcs/parse_value.c \
+			srcs/parse_number.c \
 
 LIBS	=	-lft \
 

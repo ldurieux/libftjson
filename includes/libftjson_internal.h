@@ -55,6 +55,7 @@ typedef enum e_err
 	illegal_value,
 	termination_by_number,
 	illegal_number,
+	number_overflow,
 	illegal_escape_sequence,
 	illegal_utf8string,
 	unterminated_string,
@@ -62,6 +63,7 @@ typedef enum e_err
 	deep_nesting,
 	document_too_large,
 	garbage_at_end,
+	unimplemented,
 }	t_err;
 
 /* return false if there is no more characters */
@@ -73,5 +75,6 @@ t_json_value	*parse_array(const char **raw, int *err);
 t_json_member	*parse_member(const char **raw, int *err);
 char			*parse_string(const char **raw, int *err);
 t_json_value	*parse_value(const char **raw, int *err);
+t_json_value	*parse_number(t_json_value *res, const char **raw, int *err);
 
 #endif // LIBFTJSON_INTERNAL_H
