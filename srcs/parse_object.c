@@ -27,6 +27,36 @@ static inline t_json_value	*parse_object_criterr(int *ptr_err, int err,
  * element order is not important in a json
  * object
 */
+// TODO
+/* when checking for a list failed malloc
+ * we do not store the value that was supposed
+ * to be in the list anywhere,
+ * we should free it
+*/
+static inline t_json_value	*parse_object_loop(const char **raw, int *err,
+											t_json_value *res)
+{
+	t_list			*obj;
+	char			token;
+
+	obj = NULL;
+	token = next_token(raw);
+	while (token == '\"')
+	{
+		if (!ft_list_pushfront(&obj, parse_member(raw, err)))
+			return (parse_object_criterr(err, failed_malloc, res, obj));
+		if (*err)
+			return (parse_object_criterr(err, *err, res, obj));
+		token = next_token(raw);
+		if (token != VALUE_SEP)
+			break ;
+		token = next_token(raw);
+		if (token == END_OBJECT)
+			return (parse_object_criterr(err, missing_object, res, obj));
+	}
+	return (res);
+}
+
 t_json_value	*parse_object(const char **raw, int *err)
 {
 	t_json_value	*res;
@@ -39,18 +69,9 @@ t_json_value	*parse_object(const char **raw, int *err)
 	res->type = J_Object;
 	obj = NULL;
 	token = next_token(raw);
-	while (token == '\"')
-	{
-		ft_list_pushfront(&obj, parse_member(raw, err));
-		if (*err)
-			return (parse_object_criterr(err, *err, res, obj));
-		token = next_token(raw);
-		if (token != VALUE_SEP)
-			break ;
-		token = next_token(raw);
-		if (token == END_OBJECT)
-			return (parse_object_criterr(err, missing_object, res, obj));
-	}
+	res = parse_object_loop(raw, err, res);
+	if (*err)
+		return (res);
 	res->cont = obj;
 	*err = (token != END_OBJECT) * unterminated_object;
 	return (res);
