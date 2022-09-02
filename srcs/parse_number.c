@@ -26,6 +26,7 @@ static inline t_bool	is_integer(const char *raw)
 			return (0);
 		if (chr < '0' || (chr > '9'))
 			break ;
+		chr = *++raw;
 	}
 	return (1);
 }

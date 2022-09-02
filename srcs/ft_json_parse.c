@@ -40,12 +40,12 @@ t_json_value	*ft_json_parse(const char *raw, int *err, const char **end_ptr)
 	else
 		return (ft_json_parse_criterr(err, illegal_value, res));
 	skip_whitespace(&raw);
-	if (*raw != '\0')
-		res_err = garbage_at_end;
 	if (end_ptr)
 		*end_ptr = raw;
 	if (res_err != no_error)
 		return (ft_json_parse_criterr(err, res_err, res));
+	if (*raw != '\0')
+		return (ft_json_parse_criterr(err, garbage_at_end, res));
 	if (err)
 		*err = no_error;
 	return (res);

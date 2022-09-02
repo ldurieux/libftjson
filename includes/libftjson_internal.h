@@ -25,6 +25,7 @@
 # define ERR_ILLEGAL_VAL	"illegal value"
 # define ERR_END_OF_NUM		"invalid termination by number"
 # define ERR_ILLEGAL_NUM	"illegal number"
+# define ERR_NUM_OVERFLOW	"number overflow"
 # define ERR_STR_ESC_SEQ	"invalid escape sequence"
 # define ERR_STR_UTF8		"invalid UTF8 string"
 # define ERR_UNTERM_STR		"unterminated string"
@@ -32,6 +33,7 @@
 # define ERR_DEEP_NEST		"too deeply nested document"
 # define ERR_DOC_LARGE		"too large document"
 # define ERR_GARBAGEEND		"garbage at the end of the document"
+# define ERR_UNIMPLEMENTED	"unimplemented"
 
 # define BEGIN_OBJECT	'{'
 # define END_OBJECT		'}'

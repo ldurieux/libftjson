@@ -64,5 +64,9 @@ static inline char	*ft_json_strerror2(int err)
 		return (ERR_DOC_LARGE);
 	if (err == garbage_at_end)
 		return (ERR_GARBAGEEND);
+	if (err == number_overflow)
+		return (ERR_NUM_OVERFLOW);
+	if (err == unimplemented)
+		return (ERR_UNIMPLEMENTED);
 	return (ERR_OK);
 }

@@ -1,4 +1,5 @@
 main.c
+wrap.c
 libftjson
 
 *.o

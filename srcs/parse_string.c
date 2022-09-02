@@ -34,5 +34,6 @@ char	*parse_string(const char **raw, int *err)
 	res = ft_strndup(*raw, end - *raw);
 	if (!res)
 		parse_string_criterr(err, failed_malloc, NULL);
+	*raw = end + 1;
 	return (res);
 }
