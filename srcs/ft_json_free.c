@@ -29,6 +29,7 @@ static inline void	ft_json_free_obj(t_list *obj)
 			if (member->key)
 				free(member->key);
 			ft_json_free(member->value);
+			free(member);
 		}
 		obj = obj->next;
 	}
