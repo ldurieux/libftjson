@@ -22,6 +22,7 @@ t_list	*ft_list_pushback(t_list **list, void *value)
 	res->value = value;
 	if (!*list)
 	{
+		res->next = NULL;
 		*list = res;
 		return (res);
 	}

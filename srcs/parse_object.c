@@ -22,16 +22,20 @@ static inline t_json_value	*parse_object_criterr(int *ptr_err, int err,
 	return (res);
 }
 
+static inline t_list	*list_push_guard(t_list **list, void *value)
+{
+	t_list	*res;
+
+	res = ft_list_pushfront(list, value);
+	if (!res)
+		free(value);
+	return (res);
+}
+
 /* ft_list_pushfront is a hack we should use
  * ft_list_pushback but it is slower and
  * element order is not important in a json
  * object
-*/
-// TODO
-/* when checking for a list failed malloc
- * we do not store the value that was supposed
- * to be in the list anywhere,
- * we should free it
 */
 static inline t_json_value	*parse_object_loop(const char **raw, int *err,
 											t_json_value *res)
@@ -43,7 +47,7 @@ static inline t_json_value	*parse_object_loop(const char **raw, int *err,
 	token = next_token(raw);
 	while (token == '\"')
 	{
-		if (!ft_list_pushfront(&obj, parse_member(raw, err)))
+		if (!list_push_guard(&obj, parse_member(raw, err)))
 			return (parse_object_criterr(err, failed_malloc, res, obj));
 		if (*err)
 			return (parse_object_criterr(err, *err, res, obj));

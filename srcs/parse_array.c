@@ -22,12 +22,16 @@ static inline t_json_value	*parse_array_criterr(int *ptr_err, int err,
 	return (res);
 }
 
-// TODO
-/* when checking for a list failed malloc
- * we do not store the value that was supposed
- * to be in the list anywhere,
- * we should free it
-*/
+static inline t_list	*list_push_guard(t_list **list, void *value)
+{
+	t_list	*res;
+
+	res = ft_list_pushback(list, value);
+	if (!res)
+		ft_json_free(value);
+	return (res);
+}
+
 // TODO
 /* using a list for a json array is a hack
  * we should definitly use a vector instead
@@ -43,7 +47,7 @@ static inline t_json_value	*parse_array_loop(const char **raw, int *err,
 	{
 		if (!skip_whitespace(raw))
 			return (parse_array_criterr(err, unterminated_array, res, arr));
-		if (!ft_list_pushback(&arr, parse_value(raw, err)))
+		if (!list_push_guard(&arr, parse_value(raw, err)))
 			return (parse_array_criterr(err, failed_malloc, res, arr));
 		if (*err)
 			return (parse_array_criterr(err, *err, res, arr));
