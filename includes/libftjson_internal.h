@@ -58,7 +58,7 @@ typedef enum e_err
 	termination_by_number,
 	illegal_number,
 	number_overflow,
-	illegal_escape_sequence,
+	illegal_esc_seq,
 	illegal_utf8string,
 	unterminated_string,
 	missing_object,

@@ -45,7 +45,7 @@ char	*ft_json_strerror(int err)
 		return (ERR_END_OF_NUM);
 	if (err == illegal_number)
 		return (ERR_ILLEGAL_NUM);
-	if (err == illegal_escape_sequence)
+	if (err == illegal_esc_seq)
 		return (ERR_STR_ESC_SEQ);
 	if (err == illegal_utf8string)
 		return (ERR_STR_UTF8);
