@@ -11,26 +11,19 @@
 /* ************************************************************************** */
 
 #include "libftjson.h"
+#include "libftjson_internal.h"
 
 //NOLINTNEXTLINE(misc-no-recursion)
 static inline void	ft_json_free_obj(t_list *obj)
 {
-	t_list			*obj_copy;
-	t_json_member	*member;
+	t_list	*obj_copy;
 
 	if (!obj)
 		return ;
 	obj_copy = obj;
 	while (obj)
 	{
-		member = obj->value;
-		if (member)
-		{
-			if (member->key)
-				free(member->key);
-			ft_json_free(member->value);
-			free(member);
-		}
+		ft_json_free_member(obj->value);
 		obj = obj->next;
 	}
 	ft_list_free(&obj_copy);
@@ -47,6 +40,17 @@ static inline void	ft_json_free_arr(t_json_value **arr)
 	while (arr[++idx])
 		ft_json_free(arr[idx]);
 	free(arr);
+}
+
+//NOLINTNEXTLINE(misc-no-recursion)
+void	ft_json_free_member(t_json_member *member)
+{
+	if (!member)
+		return ;
+	if (member->key)
+		free(member->key);
+	ft_json_free(member->value);
+	free(member);
 }
 
 //NOLINTNEXTLINE(misc-no-recursion)

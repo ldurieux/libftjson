@@ -32,7 +32,7 @@ static inline t_list	*list_push_guard(t_list **list, t_list **last,
 	else
 		res = ft_list_pushback(list, value);
 	if (!res)
-		free(value);
+		ft_json_free_member(value);
 	*last = res;
 	return (res);
 }

@@ -79,4 +79,6 @@ char			*parse_string(const char **raw, int *err);
 t_json_value	*parse_value(const char **raw, int *err);
 t_json_value	*parse_number(t_json_value *res, const char **raw, int *err);
 
+void			ft_json_free_member(t_json_member *member);
+
 #endif // LIBFTJSON_INTERNAL_H
