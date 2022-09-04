@@ -32,11 +32,12 @@ typedef struct s_json_value
 	t_json_type	type;
 	union
 	{
-		char	*str;
-		double	f_num;
-		t_int64	i_num;
-		t_bool	bool;
-		t_list	*cont;
+		char				*str;
+		double				f_num;
+		t_int64				i_num;
+		t_bool				bool;
+		t_list				*obj;
+		struct s_json_value	**arr;
 	};
 }	t_json_value;
 

@@ -37,19 +37,16 @@ static inline void	ft_json_free_obj(t_list *obj)
 }
 
 //NOLINTNEXTLINE(misc-no-recursion)
-static inline void	ft_json_free_arr(t_list *arr)
+static inline void	ft_json_free_arr(t_json_value **arr)
 {
-	t_list	*arr_copy;
+	size_t	idx;
 
 	if (!arr)
 		return ;
-	arr_copy = arr;
-	while (arr)
-	{
-		ft_json_free(arr->value);
-		arr = arr->next;
-	}
-	ft_list_free(&arr_copy);
+	idx = -1;
+	while (arr[++idx])
+		ft_json_free(arr[idx]);
+	free(arr);
 }
 
 //NOLINTNEXTLINE(misc-no-recursion)
@@ -63,8 +60,8 @@ void	ft_json_free(t_json_value *json)
 	if (type == J_String)
 		free(json->str);
 	else if (type == J_Object)
-		ft_json_free_obj(json->cont);
+		ft_json_free_obj(json->obj);
 	else if (type == J_Array)
-		ft_json_free_arr(json->cont);
+		ft_json_free_arr(json->arr);
 	free(json);
 }

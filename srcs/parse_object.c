@@ -17,7 +17,7 @@ static inline t_json_value	*parse_object_criterr(int *ptr_err, int err,
 									t_json_value *res, t_list *obj)
 {
 	if (res)
-		res->cont = obj;
+		res->obj = obj;
 	*ptr_err = err;
 	return (res);
 }
@@ -60,7 +60,7 @@ static inline t_json_value	*parse_object_loop(const char **raw, int *err,
 		if (token == END_OBJECT)
 			return (parse_object_criterr(err, missing_object, res, obj));
 	}
-	res->cont = obj;
+	res->obj = obj;
 	*err = (token != END_OBJECT) * unterminated_object;
 	return (res);
 }
