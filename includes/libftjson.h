@@ -52,4 +52,7 @@ t_json_value	*ft_json_parse(const char *raw, int *err,
 void			ft_json_free(t_json_value *json);
 char			*ft_json_strerror(int err);
 
+t_json_value	*ft_json_value(t_json_value *obj, const char *key);
+t_json_value	*ft_json_value_at(t_json_value *cont, size_t index);
+
 #endif // LIBFTJSON_H

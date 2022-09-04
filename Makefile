@@ -9,6 +9,7 @@ SRCS	= \
 			srcs/ft_json_parse.c \
 			srcs/ft_json_free.c \
 			srcs/ft_json_strerror.c \
+			srcs/ft_json_value.c \
 			srcs/next_token.c \
 			srcs/parse_object.c \
 			srcs/parse_member.c \

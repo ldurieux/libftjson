@@ -75,5 +75,6 @@ t_json_value	*parse_value(const char **raw, int *err)
 		return (parse_value_bool(raw, err, 0, res));
 	if (token == '\"')
 		return (parse_value_string(raw, err, res));
+	(*raw)--;
 	return (parse_number(res, raw, err));
 }
