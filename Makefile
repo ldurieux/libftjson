@@ -1,6 +1,4 @@
 SRCS	= \
-			main.c \
-			wrap.c \
 			srcs/ft_list_at.c \
 			srcs/ft_list_pop.c \
 			srcs/ft_list_push.c \
@@ -32,15 +30,17 @@ DEPS		= ${SRCS:.c=.d}
 CC			= gcc
 CCFLAGS		= -Wall -Wextra -g
 DEPSFLAGS	= -MMD -MP
-NAME		= libftjson
+NAME		= libftjson.a
 RM			= rm -f
 MAKE		= make -C
-WRAP		= -Wl,--wrap,malloc,--wrap,free
+WRAP		= 
+AR			= ar
+AR_FLAGS	= rc
 
 .PHONY: all clean fclean re
 
 $(NAME) : $(LIB_PATHS) $(OBJS)
-		$(CC) $(WRAP) $(CCFLAGS) -I$(HEADERS) $(LIB_HEADERS) -o $@ $(OBJS) $(LIB_LD) $(LIBS)
+		$(AR) $(AR_FLAGS) $(NAME) $(OBJS)
 
 $(LIB_PATHS) :
 		$(MAKE) $(notdir $(basename $@))
