@@ -25,8 +25,8 @@ static inline t_json_value	*parse_value_bool(const char **raw, int *err,
 {
 	res->type = J_Bool;
 	res->bool = val;
-	if ((val && ft_strcmp(*raw, "rue"))
-		|| (!val && ft_strcmp(*raw, "alse")))
+	if ((val && ft_strncmp(*raw, "rue", 3))
+		|| (!val && ft_strncmp(*raw, "alse", 4)))
 		return (parse_value_criterr(err, illegal_value, res));
 	(*raw) += 3 + (val == 0);
 	return (res);
@@ -36,7 +36,7 @@ static inline t_json_value	*parse_value_null(const char **raw, int *err,
 											t_json_value *res)
 {
 	res->type = J_Null;
-	if (ft_strcmp(*raw, "ull"))
+	if (ft_strncmp(*raw, "ull", 3))
 		return (parse_value_criterr(err, illegal_value, res));
 	(*raw) += 3;
 	return (res);
